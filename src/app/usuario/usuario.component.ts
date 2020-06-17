@@ -46,7 +46,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   cancelarEdicao() {
-    console.log('cancelar');
     this.router.navigate(['']);
   }
 
