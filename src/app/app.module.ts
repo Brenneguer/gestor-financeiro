@@ -1,3 +1,5 @@
+import { UsuarioComponent } from './usuario/usuario.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,18 +7,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    LoginComponent
+    LoginComponent,
+    UsuarioComponent,
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule
   ],
-  providers: [],
+  providers: [HomeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
