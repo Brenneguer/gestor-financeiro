@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white border-bottom">
+  <button class="btn btn-primary" id="menu-toggle" (click)="abrirSidebar()"><span
+      class="navbar-toggler-icon"></span></button>
+</nav>
+
+<div class="d-flex toggled" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-dark text-white border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Start Bootstrap </div>
+    <div class="list-group list-group-flush">
+      <a class="list-group-item list-group-item-action bg-dark text-white">Dashboard</a>
+      <a class="list-group-item list-group-item-action bg-dark text-white">Shortcuts</a>
+      <a class="list-group-item list-group-item-action bg-dark text-white">Overview</a>
+      <a class="list-group-item list-group-item-action bg-dark text-white">Events</a>
+      <a class="list-group-item list-group-item-action bg-dark text-white">Profile</a>
+      <a class="list-group-item list-group-item-action bg-dark text-white" routerLink='/usuario' routerLinkActive='active-route'>Admin Usuário</a>
+
+      <a class="list-group-item list-group-item-action bg-dark text-white" (click)="logout()">logout</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>

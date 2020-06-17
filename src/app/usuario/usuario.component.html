@@ -1,0 +1,55 @@
+<div class="container pt-5">
+  <div class="card">
+    <div class="card-header text-center">
+      <h2>{{usuario.getNome}}</h2>
+    </div>
+    <div class="card-body d-flex justify-content-center">
+      <form class="example-form" [formGroup]="form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Codigo</mat-label>
+          <input [formControl]="formCodigo" formControlName="codigo" matInput placeholder="codigo" name="codigo">
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input [formControl]="formNome" formControlName="nome" matInput placeholder="Nome" name="nome">
+          <mat-error *ngIf="formNome.hasError('email') && !formNome.hasError('required')">
+            Insira um Nome válido
+          </mat-error>
+          <mat-error *ngIf="formNome.hasError('required')">
+            Nome é <strong>obrigatório</strong>
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>E-mail</mat-label>
+          <input [formControl]="formEmail" formControlName="email" matInput placeholder="E-mail">
+          <mat-error *ngIf="formEmail.hasError('email') && !formEmail.hasError('required')">
+            Insira um e-mail válido
+          </mat-error>
+          <mat-error *ngIf="formEmail.hasError('required')">
+            E-mail é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Senha</mat-label>
+          <input [formControl]="formSenha" formControlName="senha" matInput placeholder="Senha">
+          <mat-error *ngIf="formSenha.hasError('required')">
+            Senha é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-secondary mt-3">Salvar</button>
+
+          <button type="submit" class="btn btn-secondary mt-3">Cancelar</button>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

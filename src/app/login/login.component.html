@@ -1,14 +1,46 @@
-<form class="example-form" formGroup="forumulario">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input matInput [formControl]="emailGet" [errorStateMatcher]="matcher"
-           placeholder="Ex. pat@example.com">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="emailGet.hasError('email') && !emailGet.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailGet.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</form>
+<div class="container pt-5">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title text-center">
+        <h2>Faça Login para continuar</h2>
+      </div>
+    </div>
+    <div class="card-body d-flex justify-content-center">
+
+      <form class="example-form" [formGroup]="formulario">
+        <mat-form-field class="example-full-width pl-2">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" name="email" [formControl]="emailGet" [errorStateMatcher]="matcher"
+            placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="emailGet.hasError('email') && !emailGet.hasError('required')">
+            Insira um e-mail válido
+          </mat-error>
+          <mat-error *ngIf="emailGet.hasError('required')">
+            E-mail é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width pl-2">
+          <mat-label>Senha</mat-label>
+          <input type="password" formControlName="senha" name="senha" matInput [formControl]="senhaGet">
+          <mat-error *ngIf="emailGet.hasError('required')">
+            Senha é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="d-flex justify-content-between">
+
+            <button type="submit" class="btn btn-secondary mt-3" (click)="onSubmit()">Login</button>
+
+
+            <button type="submit" class="btn btn-secondary mt-3" (click)="onSubmit()">Esqueci a senha</button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
