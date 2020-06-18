@@ -20,7 +20,6 @@ export class AuthService {
   ) { }
 
   login(user: User) {
-    console.log('alguem chamou o metodo login');
     if (user.email !== '' && user.senha !== '') {
       this.loggedIn.next(true);
       this.router.navigate(['']);

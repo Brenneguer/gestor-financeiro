@@ -1,8 +1,10 @@
-import { HomeComponent } from './../home/home.component';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { UsuarioDTO } from './usuarioDTO';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NullTemplateVisitor } from '@angular/compiler';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -12,15 +14,16 @@ import { Router } from '@angular/router';
 
 export class UsuarioComponent implements OnInit {
 
-  constructor(private router: Router) { }
-  usuario: UsuarioDTO = new UsuarioDTO('Weuller', 'wbrenneguer07@gmail.com', 'Ts40id60');
+  constructor(private router: Router, private usuarioService: UsuarioService) { }
+  usuario: UsuarioDTO = this.usuarioService.getUsuario();
 
 
   form: FormGroup = new FormGroup({
-    codigo: new FormControl({value: '', disabled: true}),
+    codigo: new FormControl({value: ''}),
     nome: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    senha: new FormControl('', Validators.required)
+    senha: new FormControl('', Validators.required),
+    indDeletado: new FormControl({value: ''})
   });
 
   get formCodigo(): FormControl {
@@ -40,13 +43,23 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuario.setCodigo(1);
-    this.form.setValue(this.usuario);
-
+    this.usuarioService.consultarUsuario().subscribe(dados => {
+      this.usuario = dados;
+      this.form.setValue(dados);
+    });
   }
 
   cancelarEdicao() {
     this.router.navigate(['']);
+  }
+
+  salvar() {
+    if (this.form.valid) {
+      this.usuario = (this.form.value);
+      if (this.usuario.codigo != null) {
+
+      }
+    }
   }
 
 }
