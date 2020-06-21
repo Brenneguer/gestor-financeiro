@@ -2,8 +2,13 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  margin:auto
+}
+
 #sidebar-wrapper {
-  min-height: 100vh;
+  border-radius: 0 0 8px;
+  min-height: 50vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
@@ -40,5 +45,6 @@ body {
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
+    height: 100%;
   }
 }

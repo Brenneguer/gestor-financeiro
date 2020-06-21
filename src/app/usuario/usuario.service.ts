@@ -11,7 +11,8 @@ export class UsuarioService {
     codigo: 1,
     nome: null,
     email: null,
-    senha: null
+    senha: null,
+    indDeletado: null
   };
 
   constructor(private http: HttpClient) { }
@@ -24,6 +25,8 @@ export class UsuarioService {
   getUsuario(): UsuarioDTO {
     return this.usuario;
   }
+
+
 
 }
 

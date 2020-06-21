@@ -1,3 +1,4 @@
+import { ContaAPagarComponent } from './conta-a-pagar/conta-a-pagar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
@@ -11,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { CategoriaModule } from './categoria/categoria.module';
 
 
 
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     UsuarioComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    ContaAPagarComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    CategoriaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
