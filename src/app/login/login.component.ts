@@ -2,6 +2,7 @@ import { AuthService } from './../auth/auth.service';
 import { User } from './user';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -32,12 +33,26 @@ export class LoginComponent implements OnInit {
   get senhaGet(): FormControl {
     return this.formulario.get('senha') as FormControl;
   }
+
   onSubmit() {
     this.user = (this.formulario.value);
-    this.authService.login(this.user);
+    const logado = this.authService.login(this.user);
+    if (logado === false) {
+      document.getElementById('falhouLogin').classList.add('show');
+    } else {
+      document.getElementById('falhouLogin').classList.remove('show');
+    }
   }
+
+  fecharAlerta() {
+    document.getElementById('falhouLogin').classList.remove('show');
+    document.getElementById('falhouLogin').classList.add('closed');
+  }
+
   ngOnInit(): void {
       this.formulario.setValue(this.user);
   }
 
 }
+
+

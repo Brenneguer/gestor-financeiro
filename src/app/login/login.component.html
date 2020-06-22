@@ -1,10 +1,15 @@
-<div class="pt-5">
+
+<div class="container pt-5">
 
   <div class="card">
     <div class="card-header">
       <div class="card-title text-center">
         <h2>Faça Login para continuar</h2>
       </div>
+    </div>
+    <div id="falhouLogin" class="alert alert-danger alert-dismissible fade closed">
+      <button (click)="fecharAlerta()" type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Falha!</strong> Usuário ou senha inválidos.
     </div>
     <div class="card-body d-flex justify-content-center">
 
