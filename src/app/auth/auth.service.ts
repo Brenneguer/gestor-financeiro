@@ -8,7 +8,7 @@ import { shareReplay, distinctUntilChanged } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  private loggedIn = new BehaviorSubject<boolean>(true);
 
   get isLoggedIn() {
     return this.loggedIn.asObservable().pipe(shareReplay(), distinctUntilChanged());
@@ -20,7 +20,6 @@ export class AuthService {
   ) { }
 
   login(user: User) {
-    console.log('alguem chamou o metodo login');
     if (user.email !== '' && user.senha !== '') {
       this.loggedIn.next(true);
       this.router.navigate(['']);

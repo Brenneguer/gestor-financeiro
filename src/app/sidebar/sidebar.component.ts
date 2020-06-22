@@ -1,3 +1,5 @@
+import { UsuarioDTO } from './../usuario/usuarioDTO';
+import { UsuarioService } from './../usuario/usuario.service';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private usuarioService: UsuarioService
   ) { }
+  usuario: UsuarioDTO = this.usuarioService.getUsuario();
 
   isAberto = false;
 

@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h2>Conta a pagar</h2>
+  </div>
+  <div class="card-body">
+    <form class="example-form" [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>codigo</mat-label>
+        <input formControlName="codigo" matInput placeholder="codigo" name="codigo" readonly>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Título</mat-label>
+        <input formControlName="titulo" matInput placeholder="Nome" name="nome">
+        <mat-error *ngIf="formTitulo.hasError('email') && !formTitulo.hasError('required')">
+          Título é obrigatório
+        </mat-error>
+        <mat-error *ngIf="formTitulo.hasError('required')">
+          Título é <strong>obrigatório</strong>
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categoria">
+          <mat-option *ngFor="let food of foods" value="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" color="accent">
+        <mat-label>Data Vencimento</mat-label>
+        <input formControlName="dataVencimento" matInput [matDatepicker]="dataVencimento">
+        <mat-datepicker-toggle matSuffix [for]="dataVencimento"></mat-datepicker-toggle>
+        <mat-datepicker #dataVencimento></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" color="accent">
+        <mat-label>Data Pagamento</mat-label>
+        <input formControlName="dataPagamento" matInput [matDatepicker]="dataPagamento">
+        <mat-datepicker-toggle matSuffix [for]="dataPagamento"></mat-datepicker-toggle>
+        <mat-datepicker #dataPagamento></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Valor</mat-label>
+        <input placeholder="R$ 30.00" matInput formControlName="valor">
+      </mat-form-field>
+
+      <mat-checkbox formControlName="indPago" [labelPosition]="before">Pago</mat-checkbox>
+
+
+
+
+
+      <div class="d-flex justify-content-between">
+
+        <button type="submit" class="btn btn-secondary mt-3" (click)="onSubmit()">Salvar</button>
+        <button type="submit" class="btn btn-secondary mt-3">Cancelar</button>
+
+      </div>
+    </form>
+  </div>
+</div>

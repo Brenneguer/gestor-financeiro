@@ -33,9 +33,7 @@ export class LoginComponent implements OnInit {
     return this.formulario.get('senha') as FormControl;
   }
   onSubmit() {
-    this.user.senha = this.formulario.get('senha').value;
-    this.user.email = this.formulario.get('email').value;
-    console.log(`Email: ${this.user.email}, senha: ${this.user.senha}`);
+    this.user = (this.formulario.value);
     this.authService.login(this.user);
   }
   ngOnInit(): void {
