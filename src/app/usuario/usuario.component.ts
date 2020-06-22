@@ -1,15 +1,18 @@
+import { HomeComponent } from './../home/home.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioDTO } from './usuarioDTO';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css']
 })
+
 export class UsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   usuario: UsuarioDTO = new UsuarioDTO('Weuller', 'wbrenneguer07@gmail.com', 'Ts40id60');
 
 
@@ -40,6 +43,10 @@ export class UsuarioComponent implements OnInit {
     this.usuario.setCodigo(1);
     this.form.setValue(this.usuario);
 
+  }
+
+  cancelarEdicao() {
+    this.router.navigate(['']);
   }
 
 }
