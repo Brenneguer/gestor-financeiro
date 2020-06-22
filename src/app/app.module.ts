@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriaComponent } from './categoria/categoria.component';
 import { CategoriaModule } from './categoria/categoria.module';
 
 
@@ -24,8 +23,7 @@ import { CategoriaModule } from './categoria/categoria.module';
     UsuarioComponent,
     SidebarComponent,
     HomeComponent,
-    ContaAPagarComponent,
-    CategoriaComponent
+    ContaAPagarComponent
   ],
   imports: [
     BrowserModule,

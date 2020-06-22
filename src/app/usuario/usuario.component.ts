@@ -46,14 +46,8 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.usuarioService.consultarUsuario().subscribe(dados => {
-        console.log('antes:', this.form.value);
-        console.log(dados);
-
-        this.usuario = dados;
-        this.form.setValue(dados);
-        console.log('depois: ', this.form.value);
-      });
+      this.usuario = this.usuarioService.getUsuario();
+      this.form.setValue(this.usuario);
 
   }
 
@@ -65,7 +59,7 @@ export class UsuarioComponent implements OnInit {
     if (this.form.valid) {
       this.usuario = (this.form.value);
       if (this.usuario.codigo != null) {
-
+        this.usuarioService.atualizarUsuario(this.usuario);
       }
     }
   }
