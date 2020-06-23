@@ -17,6 +17,8 @@ export class SidebarComponent implements OnInit {
   usuario: UsuarioDTO = this.usuarioService.getUsuario();
 
   isAberto = false;
+  vertebrates = ['priemeiro', 'segundo'];
+  invertebrates = ['terceiro', 'quarto'];
 
   abrirSidebar() {
     const wrapper = document.getElementById('wrapper');

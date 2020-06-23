@@ -23,8 +23,8 @@
       <mat-form-field class="example-full-width">
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="categoria">
-          <mat-option *ngFor="let food of foods" value="food.value">
-            {{food.viewValue}}
+          <mat-option *ngFor="let categoria of categorias" value="categoira.codigo">
+            {{categoria.nome}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -35,7 +35,9 @@
         <mat-datepicker-toggle matSuffix [for]="dataVencimento"></mat-datepicker-toggle>
         <mat-datepicker #dataVencimento></mat-datepicker>
       </mat-form-field>
+
       <br>
+
       <mat-form-field class="example-full-width" color="accent">
         <mat-label>Data Pagamento</mat-label>
         <input formControlName="dataPagamento" matInput [matDatepicker]="dataPagamento">
@@ -48,10 +50,6 @@
       </mat-form-field>
 
       <mat-checkbox formControlName="indPago" [labelPosition]="before">Pago</mat-checkbox>
-
-
-
-
 
       <div class="d-flex justify-content-between">
 

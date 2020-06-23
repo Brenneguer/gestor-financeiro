@@ -1,3 +1,5 @@
+import { CategoriaService } from './../categoria/categoria.service';
+import { ContaAPagarService } from './conta-a-pagar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -5,6 +7,7 @@ import { UsuarioService } from '../usuario/usuario.service';
 import { UsuarioDTO } from '../usuario/usuarioDTO';
 import { Subscription } from 'rxjs';
 import { Food } from './Food';
+import { Categoria } from '../categoria/CategoriaDTO';
 
 @Component({
   selector: 'app-conta-a-pagar',
@@ -13,15 +16,11 @@ import { Food } from './Food';
 })
 export class ContaAPagarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contaService: ContaAPagarService, private categoriaService: CategoriaService) { }
 
   before = 'before';
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  categorias: Categoria[];
 
   form: FormGroup = new FormGroup({
     codigo: new FormControl(''),
@@ -66,7 +65,11 @@ export class ContaAPagarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.categorias);
+    this.categoriaService.listar().subscribe(dados => {
+      this.categorias = dados;
+      console.log(dados);
+    });
   }
 
 }
