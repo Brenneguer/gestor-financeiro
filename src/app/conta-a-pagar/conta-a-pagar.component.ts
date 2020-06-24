@@ -61,10 +61,8 @@ export class ContaAPagarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.categorias);
-    this.categoriaService.listar().subscribe(dados => {
+    this.categoriaService.categoriaAPagar().subscribe(dados => {
       this.categorias = dados;
-      console.log(dados);
     });
   }
 
