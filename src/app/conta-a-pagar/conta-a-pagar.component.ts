@@ -3,10 +3,6 @@ import { ContaAPagarService } from './conta-a-pagar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../usuario/usuario.service';
-import { UsuarioDTO } from '../usuario/usuarioDTO';
-import { Subscription } from 'rxjs';
-import { Food } from './Food';
 import { Categoria } from '../categoria/CategoriaDTO';
 
 @Component({

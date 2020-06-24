@@ -1,3 +1,6 @@
+import { UsuarioService } from './../usuario/usuario.service';
+import { CategoriaService } from './../categoria/categoria.service';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,6 +8,6 @@ import { Injectable } from '@angular/core';
 })
 export class ContaAPagarService {
 
-  constructor() { }
+  constructor( private http: HttpClient, private  categoriaService: CategoriaService, private usuarioService: UsuarioService) { }
 
 }

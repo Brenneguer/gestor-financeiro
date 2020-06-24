@@ -26,4 +26,12 @@ export class CategoriaService {
   atualizar(categoria: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>(this.url, categoria);
   }
+
+  categoriaAPagar(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.url + '/filtrar/Despesa');
+  }
+
+  categoriaAReceber(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.url + '/filtrar/Receita');
+  }
 }
