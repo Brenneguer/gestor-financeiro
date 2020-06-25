@@ -1,3 +1,4 @@
+import { ContaAPagarDTO } from './conta-a-pagarDTO';
 import { CategoriaService } from './../categoria/categoria.service';
 import { ContaAPagarService } from './conta-a-pagar.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +18,17 @@ export class ContaAPagarComponent implements OnInit {
   before = 'before';
 
   categorias: Categoria[];
+  private conta: ContaAPagarDTO = {
+    codigo: null,
+    titulo: null,
+    usuario: null,
+    categoria: null,
+    dataVencimento: null,
+    dataPagamento: null,
+    valor: null,
+    indPago: null,
+    indDeletado: null
+  };
 
   form: FormGroup = new FormGroup({
     codigo: new FormControl(''),
@@ -57,7 +69,21 @@ export class ContaAPagarComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.conta = (this.form.value);
+    this.contaService.cadastrar(this.conta).subscribe(retorno => {
+      if (retorno.codigo != null) {
+        this.form.reset();
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+        modal.classList.add('show');
+        modal.setAttribute('te', 'te');
+      }
+    });
+  }
+  closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    modal.classList.remove('show');
   }
 
   ngOnInit(): void {

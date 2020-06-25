@@ -31,6 +31,7 @@ export class UsuarioService {
 
   setUsuarioLogado(user: UsuarioDTO) {
     this.usuarioLogado = user;
+    this.usuarioLogado.senha = null;
   }
 
   atualizarUsuario(user: UsuarioDTO) {

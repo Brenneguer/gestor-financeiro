@@ -3,6 +3,7 @@ import { MaterialModule } from '../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContaAPagarComponent } from './conta-a-pagar.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core/datetime/date-adapter';
 
 
 
