@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,8 @@ import { UsuarioComponent } from '../usuario/usuario.component';
   imports: [
     CommonModule,
     RouterModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class SidebarModule { }
