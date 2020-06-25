@@ -1,8 +1,12 @@
+import { TipoDTO } from './../tipo/TipoDTO';
+import { TipoService } from './../tipo/tipo.service';
 import { CategoriaService } from './categoria.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Categoria } from './CategoriaDTO';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-categoria',
@@ -18,16 +22,27 @@ export class CategoriaComponent implements OnInit {
     indDeletado: null,
   };
 
-  private categorias: Categoria[];
 
-  constructor(private categoriaSerice: CategoriaService) { }
+  constructor(private categoriaSerice: CategoriaService, private tipoService: TipoService) { }
+
+  private categorias: Categoria[];
+  private tipos: TipoDTO[];
+  displayedColumns: string[] = ['Categoria', 'Tipo', 'Ações'];
+  dataSource: MatTableDataSource<Categoria>;
 
   ngOnInit(): void {
     this.categoriaSerice.listar().subscribe(dados => {
       this.categorias = dados;
+      this.dataSource = new MatTableDataSource(dados);
+    });
+
+    this.tipoService.listar().subscribe(dados => {
+      this.tipos = dados;
     });
   }
 
-
+get tiposSalvos(): TipoDTO[] {
+  return this.tipos;
+}
 
 }

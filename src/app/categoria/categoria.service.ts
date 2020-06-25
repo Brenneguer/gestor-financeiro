@@ -34,4 +34,5 @@ export class CategoriaService {
   categoriaAReceber(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.url + '/filtrar/Receita');
   }
+
 }

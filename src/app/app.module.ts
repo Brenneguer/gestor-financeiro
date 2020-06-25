@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { ContasAPagarComponent } from './conta-a-pagar/contas-a-pagar/contas-a-pagar.component';
 import { ContaAPagarComponent } from './conta-a-pagar/conta-a-pagar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -15,6 +16,7 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaModule } from './categoria/categoria.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ContaAReceberModule } from './conta-a-receber/conta-a-receber.module';
 
 
 
@@ -37,7 +39,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     BrowserAnimationsModule,
     HomeModule,
     HttpClientModule,
-    CategoriaModule
+    CategoriaModule,
+    ContaAReceberModule,
+    MatTableModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

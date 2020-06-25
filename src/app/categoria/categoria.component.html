@@ -1,1 +1,34 @@
-<p>categoria works!</p>
+<div class="card">
+  <div class="card-header">
+   Listagem de categorias!
+  </div>
+  <div class="card-body">
+    <div class="content">
+      <table mat-table [dataSource]="dataSource" matSort class="table table-striped">
+
+
+        <ng-container matColumnDef="Categoria">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Categoria </th>
+          <td mat-cell *matCellDef="let categoria"> {{categoria.nome}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Tipo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Tipo </th>
+          <td mat-cell *matCellDef="let categoria"> {{categoria.tipo.tipo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Ações">
+          <th mat-header-cell *matHeaderCellDef > Ações </th>
+          <td mat-cell *matCellDef="let aluno">
+            <button type="submit" class="btn btn-secondary mt-3">Editar</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+
+  </div>

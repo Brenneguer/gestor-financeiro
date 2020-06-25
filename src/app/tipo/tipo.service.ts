@@ -11,7 +11,7 @@ export class TipoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<TipoDTO> {
-    return this.http.get<TipoDTO>(this.url);
+  listar(): Observable<TipoDTO[]> {
+    return this.http.get<TipoDTO[]>(this.url);
   }
 }
