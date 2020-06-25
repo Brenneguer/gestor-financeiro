@@ -1,3 +1,4 @@
+import { ContasAPagarComponent } from './conta-a-pagar/contas-a-pagar/contas-a-pagar.component';
 import { ContaAPagarComponent } from './conta-a-pagar/conta-a-pagar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -24,7 +25,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     UsuarioComponent,
     SidebarComponent,
     HomeComponent,
-    ContaAPagarComponent
+    ContaAPagarComponent,
+    ContasAPagarComponent
   ],
   imports: [
     BrowserModule,
