@@ -18,9 +18,9 @@ export class CategoriaService {
     return this.http.post<Categoria>(this.url, categoria);
   }
 
-  deletar(categoria: Categoria) {
+  deletar(categoria: Categoria): Observable<boolean> {
     categoria.indDeletado = true;
-    this.http.delete(`${this.url + categoria.codigo}`);
+    return this.http.delete<boolean>(`${this.url}/${categoria.codigo}`);
   }
 
   atualizar(categoria: Categoria): Observable<Categoria> {

@@ -11,7 +11,7 @@ import { shareReplay, distinctUntilChanged } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(true);
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
   url = 'http://localhost:8080/usuario/';
 

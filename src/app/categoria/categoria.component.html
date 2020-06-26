@@ -5,41 +5,61 @@
   </div>
   <div class="card-body">
     <div class="content">
-      <table mat-table [dataSource]="dataSource" matSort>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
 
         <ng-container matColumnDef="Categoria">
-          <th mat-header-cell *matHeaderCellDef scope="col"> Categoria </th>
+          <th mat-header-cell *matHeaderCellDef> Categoria </th>
           <td class="alinhar" mat-cell *matCellDef="let categoria"> {{categoria.nome}} </td>
         </ng-container>
 
 
         <ng-container matColumnDef="Tipo">
-          <th mat-header-cell *matHeaderCellDef scope="col"> Tipo </th>
+          <th mat-header-cell *matHeaderCellDef> Tipo </th>
           <td mat-cell *matCellDef="let categoria"> {{categoria.tipo.tipo}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Ações">
           <th mat-header-cell *matHeaderCellDef> Ações </th>
-          <td mat-cell *matCellDef="let aluno">
-            <button type="submit" class="btn btn-secondary ml-2">Editar</button>
+          <td mat-cell *matCellDef="let categoria">
+            <button type="submit" class="btn btn-secondary ml-2" (click)="editarCategoria(categoria)">Editar</button>
+            <button type="submit" class="btn btn-secondary ml-2" (click)="excluirCategoria(categoria)">Excluir</button>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div>
-
-    <div>
-      <a routerLink='/categoria/nova' routerLinkActive="active-route">
-        <button mat-fab color="secundary">
-          <mat-icon>add</mat-icon>
-        </button>
-      </a>
+      <mat-paginator class="pt-2 pb-0"[pageSizeOptions]="[5, 7, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
 
   </div>
 
+  <a routerLink='/categoria/nova' routerLinkActive="active-route" class="ml-3 mb-3 mt-3">
+    <button mat-fab color="secundary" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </a>
+  <div>
+</div>
 
+
+<div id="modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Sucesso</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"(click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Salvo com Sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 

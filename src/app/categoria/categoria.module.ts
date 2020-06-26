@@ -1,3 +1,5 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HomeRoutingModule } from './../home/home-routing.module';
 import { MaterialModule } from './../material/material.module';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
@@ -13,7 +15,10 @@ import { CategoriaDetalheComponent } from './categoria-detalhe/categoria-detalhe
   imports: [
     CommonModule,
     MatTableModule,
-    MaterialModule
+    MaterialModule,
+    HomeRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CategoriaModule { }

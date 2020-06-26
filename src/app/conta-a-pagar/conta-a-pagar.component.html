@@ -11,8 +11,8 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Título</mat-label>
-        <input formControlName="titulo" matInput placeholder="Nome" name="nome">
-        <mat-error *ngIf="formTitulo.hasError('email') && !formTitulo.hasError('required')">
+        <input formControlName="titulo" matInput placeholder="Nome" name="titulo">
+        <mat-error *ngIf="formTitulo.hasError('titulo') && !formTitulo.hasError('required')">
           Título é obrigatório
         </mat-error>
         <mat-error *ngIf="formTitulo.hasError('required')">
