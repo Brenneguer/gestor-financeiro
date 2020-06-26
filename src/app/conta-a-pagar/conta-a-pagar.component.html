@@ -11,8 +11,8 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Título</mat-label>
-        <input formControlName="titulo" matInput placeholder="Nome" name="nome">
-        <mat-error *ngIf="formTitulo.hasError('email') && !formTitulo.hasError('required')">
+        <input formControlName="titulo" matInput placeholder="Nome" name="titulo">
+        <mat-error *ngIf="formTitulo.hasError('titulo') && !formTitulo.hasError('required')">
           Título é obrigatório
         </mat-error>
         <mat-error *ngIf="formTitulo.hasError('required')">
@@ -23,20 +23,22 @@
       <mat-form-field class="example-full-width">
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="categoria">
-          <mat-option *ngFor="let food of foods" value="food.value">
-            {{food.viewValue}}
+          <mat-option  name="categoria" *ngFor="let valor of categorias" [value]="valor">
+            {{valor.nome}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" color="accent">
+      <mat-form-field class="example-full-width" color="primary">
         <mat-label>Data Vencimento</mat-label>
         <input formControlName="dataVencimento" matInput [matDatepicker]="dataVencimento">
         <mat-datepicker-toggle matSuffix [for]="dataVencimento"></mat-datepicker-toggle>
         <mat-datepicker #dataVencimento></mat-datepicker>
       </mat-form-field>
+
       <br>
-      <mat-form-field class="example-full-width" color="accent">
+
+      <mat-form-field class="example-full-width" color="primary">
         <mat-label>Data Pagamento</mat-label>
         <input formControlName="dataPagamento" matInput [matDatepicker]="dataPagamento">
         <mat-datepicker-toggle matSuffix [for]="dataPagamento"></mat-datepicker-toggle>
@@ -49,10 +51,6 @@
 
       <mat-checkbox formControlName="indPago" [labelPosition]="before">Pago</mat-checkbox>
 
-
-
-
-
       <div class="d-flex justify-content-between">
 
         <button type="submit" class="btn btn-secondary mt-3" (click)="onSubmit()">Salvar</button>
@@ -60,5 +58,25 @@
 
       </div>
     </form>
+  </div>
+</div>
+
+
+<div id="modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Sucesso</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"(click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Salvo com Sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fechar</button>
+      </div>
+    </div>
   </div>
 </div>

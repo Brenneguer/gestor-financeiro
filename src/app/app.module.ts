@@ -1,3 +1,5 @@
+import { MatTableModule } from '@angular/material/table';
+import { ContasAPagarComponent } from './conta-a-pagar/contas-a-pagar/contas-a-pagar.component';
 import { ContaAPagarComponent } from './conta-a-pagar/conta-a-pagar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -13,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaModule } from './categoria/categoria.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ContaAReceberModule } from './conta-a-receber/conta-a-receber.module';
+
 
 
 
@@ -23,7 +28,8 @@ import { CategoriaModule } from './categoria/categoria.module';
     UsuarioComponent,
     SidebarComponent,
     HomeComponent,
-    ContaAPagarComponent
+    ContaAPagarComponent,
+    ContasAPagarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,13 @@ import { CategoriaModule } from './categoria/categoria.module';
     BrowserAnimationsModule,
     HomeModule,
     HttpClientModule,
-    CategoriaModule
+    CategoriaModule,
+    ContaAReceberModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Categoria Nova</h2>
+  </div>
+  <div class="card-body">
+    <form class="example-form" [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input formControlName='nome' matInput placeholder="Nome" name='nome'>
+        <mat-error *ngIf="formNome.hasError('required')">
+          Nome é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="tipo">
+          <mat-option name="tipo" *ngFor="let tipo of tipos" [value]="tipo">
+            {{tipo.tipo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="submit" class="btn btn-secondary mt-3" (click)="onSubmit()">Salvar</button>
+
+    </form>
+  </div>
+
+</div>
+
+<div id="modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Sucesso</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"(click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Salvo com Sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

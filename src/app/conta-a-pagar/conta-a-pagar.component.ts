@@ -1,10 +1,10 @@
+import { ContaAPagarDTO } from './conta-a-pagarDTO';
+import { CategoriaService } from './../categoria/categoria.service';
+import { ContaAPagarService } from './conta-a-pagar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../usuario/usuario.service';
-import { UsuarioDTO } from '../usuario/usuarioDTO';
-import { Subscription } from 'rxjs';
-import { Food } from './Food';
+import { Categoria } from '../categoria/CategoriaDTO';
 
 @Component({
   selector: 'app-conta-a-pagar',
@@ -13,15 +13,22 @@ import { Food } from './Food';
 })
 export class ContaAPagarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contaService: ContaAPagarService, private categoriaService: CategoriaService) { }
 
   before = 'before';
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  categorias: Categoria[];
+  private conta: ContaAPagarDTO = {
+    codigo: null,
+    titulo: null,
+    usuario: null,
+    categoria: null,
+    dataVencimento: null,
+    dataPagamento: null,
+    valor: null,
+    indPago: null,
+    indDeletado: null
+  };
 
   form: FormGroup = new FormGroup({
     codigo: new FormControl(''),
@@ -62,11 +69,27 @@ export class ContaAPagarComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.conta = (this.form.value);
+    this.contaService.cadastrar(this.conta).subscribe(retorno => {
+      if (retorno.codigo != null) {
+        this.form.reset();
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+        modal.classList.add('show');
+        modal.setAttribute('te', 'te');
+      }
+    });
+  }
+  closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    modal.classList.remove('show');
   }
 
   ngOnInit(): void {
-
+    this.categoriaService.categoriaAPagar().subscribe(dados => {
+      this.categorias = dados;
+    });
   }
 
 }
