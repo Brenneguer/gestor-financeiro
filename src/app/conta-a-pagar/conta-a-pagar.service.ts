@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ContaAPagarDTO } from './conta-a-pagarDTO';
 import { UsuarioService } from './../usuario/usuario.service';
 import { CategoriaService } from './../categoria/categoria.service';
@@ -17,4 +17,7 @@ export class ContaAPagarService {
     return this.http.post<ContaAPagarDTO>(this.url, conta);
   }
 
+  listar(): Observable<ContaAPagarDTO[]>{
+    return this.http.get<ContaAPagarDTO[]>(this.url);
+  }
 }

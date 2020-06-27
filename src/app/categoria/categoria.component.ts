@@ -59,7 +59,7 @@ export class CategoriaComponent implements OnInit {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
     modal.classList.remove('show');
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
   get tiposSalvos(): TipoDTO[] {

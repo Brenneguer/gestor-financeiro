@@ -76,7 +76,6 @@ export class ContaAPagarComponent implements OnInit {
         const modal = document.getElementById('modal');
         modal.style.display = 'block';
         modal.classList.add('show');
-        modal.setAttribute('te', 'te');
       }
     });
   }

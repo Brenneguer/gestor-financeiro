@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioDTO } from './../../usuario/usuarioDTO';
 import { TipoDTO } from './../../tipo/TipoDTO';
 import { TipoService } from './../../tipo/tipo.service';
@@ -17,7 +17,7 @@ import { Categoria } from '../CategoriaDTO';
 export class CategoriaDetalheComponent implements OnInit {
 
   constructor(private categoriaService: CategoriaService, private usuarioService: UsuarioService,
-              private tipoService: TipoService, private router: ActivatedRoute) { }
+              private tipoService: TipoService, private router: ActivatedRoute, private rota: Router) { }
 
   private subscription: Subscription;
   private tiposDTO: TipoDTO[];
@@ -74,6 +74,7 @@ export class CategoriaDetalheComponent implements OnInit {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
     modal.classList.remove('show');
+    this.rota.navigate(['/categoria']);
   }
 
   ngOnInit(): void {

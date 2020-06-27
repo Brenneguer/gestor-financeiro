@@ -8,3 +8,14 @@
   width: 100%;
 }
 
+
+ml-2 {
+  padding-left: 2.5rem;
+}
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
