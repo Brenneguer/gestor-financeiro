@@ -9,49 +9,62 @@
       <ng-container matColumnDef="Codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
         <td class="alinhar" mat-cell *matCellDef="let conta"> {{conta.codigo}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
 
       <ng-container matColumnDef="Titulo">
         <th mat-header-cell *matHeaderCellDef> Título </th>
         <td mat-cell *matCellDef="let conta"> {{conta.titulo}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Categoria">
         <th mat-header-cell *matHeaderCellDef> Categoria </th>
         <td mat-cell *matCellDef="let conta"> {{conta.categoria.nome}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Valor">
         <th mat-header-cell *matHeaderCellDef> Valor </th>
-        <td mat-cell *matCellDef="let conta"> {{conta.valor}} </td>
+        <td mat-cell *matCellDef="let conta"> {{conta.valor | currency: "BRL": true:'1.2-2'}} </td>
+        <mat-footer-cell *matFooterCellDef>Total: {{calcularTotal() | currency: "BRL"}}</mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Data Vencimento">
         <th mat-header-cell *matHeaderCellDef> Data de Vencimento </th>
         <td mat-cell *matCellDef="let conta"> {{conta.dataVencimento | date:'dd/MM/yyyy'}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Data Pagamento">
         <th mat-header-cell *matHeaderCellDef> Data de Pagamento </th>
         <td mat-cell *matCellDef="let conta"> {{conta.dataPagamento | date:'dd/MM/yyyy'}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Indicador Pagamento">
         <th mat-header-cell *matHeaderCellDef> Pago </th>
         <td mat-cell *matCellDef="let conta"> {{conta.indPago ? 'Sim' : 'Não'}} </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <ng-container matColumnDef="Ações">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let conta">
-          <button type="submit" class="btn btn-secondary ml-2" (click)="editarConta(conta)">Editar</button>
-          <button type="submit" class="btn btn-secondary ml-2" (click)="excluirConta(conta)">Excluir</button>
+          <button mat-mini-fab type="submit" color="secundary" (click)="editarConta(conta)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab class="ml-3" type="submit" color="warn" (click)="excluirConta(conta)">
+            <mat-icon class="mat-18">remove</mat-icon>
+          </button>
         </td>
+        <mat-footer-cell *matFooterCellDef></mat-footer-cell>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-footer-row class="sticky-footer" *matFooterRowDef="['Valor']"></mat-footer-row>
     </table>
     <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>

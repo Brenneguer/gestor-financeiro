@@ -61,7 +61,7 @@ export class ContaAPagarComponent implements OnInit {
   }
 
   get formValor(): FormControl {
-    return this.form.get('vaor') as FormControl;
+    return this.form.get('valor') as FormControl;
   }
 
   get formIsPago(): FormControl {
